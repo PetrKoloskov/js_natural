@@ -1,1 +1,67 @@
-<!doctype html><html><head><meta charset="utf-8"><title>Webpack App</title><meta name="viewport" content="width=device-width,initial-scale=1"><script defer="defer" src="bundle.js"></script></head><body></body></html>
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Webpack App2</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script defer="defer" src="bundle.js"></script>
+</head>
+<body>
+<style>
+    #text{
+        width:600px;
+        height:400px
+    }
+    #submit{
+
+    }
+</style>
+
+<textarea name="text" id="text" placeholder="Введите текст..."></textarea>
+<button name="submit" id="submit">Анализировать текст</button>
+<div id="res">
+
+</div>
+
+<script>
+    function countSumbols(str){
+        //str=str.replace(/ /gi,'').trim();
+        var dict={};
+        for(let i=0;i<str.length;i++){
+            if(dict.hasOwnProperty(str[i])){
+                dict[str[i]]++;
+            }else{
+                dict[str[i]]=1;
+            }
+        }
+        return dict;
+    }
+    function countLetters(str,typeLetters){
+
+        //var arr='аоэеиыуёюяaeiouy';
+        return str.reduce((res,item)=>typeLetters.includes(item)?res+=item:res,'');
+    }
+
+    function countWords(str){
+
+    }
+
+    var button=document.getElementById('submit');
+    var text=document.getElementById('text');
+
+    button.addEventListener('click',()=>{
+        console.log(text.value.length);
+        var str=text.value.toLowerCase().split('');
+        var sGl='БВГДЖЗЙКЛМНПРСТФХЦЧШЩBCDFGHJKLMNPQRSTVWXYZ'.toLowerCase();
+        var gl='АОЭЕИЫУЁЮЯAEIOUY'.toLowerCase();
+        console.log(countSumbols(text.value));
+        var countGl=countLetters(str,gl);
+        var countSGl=countLetters(str,sGl);
+        var countAllLetters=countGl.length+countSGl.length;
+        console.log('количество гласных: ', countGl.length);
+        console.log('количество согласных: ', countSGl.length);
+        console.log('Общее количество букв: ', countAllLetters);
+    })
+</script>
+</body>
+</html>

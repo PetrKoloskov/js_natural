@@ -23,7 +23,7 @@ module.exports = {
         filename: 'bundle.js',
     },
     plugins: [
-        new HtmlWebpackPlugin(),
+        //new HtmlWebpackPlugin(),
         new webpack.ProvidePlugin({
             process: 'process/browser',
         }),

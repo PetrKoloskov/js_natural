@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.15.5",
     "fs": "^0.0.1-security",
     "natural": "^5.1.1",
     "os-browserify": "^0.3.0",
