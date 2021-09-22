@@ -110,7 +110,7 @@ button.addEventListener('click',()=>{
             console.log(baseForms[key]);
             for(let i=0;i<baseForms[key].length;i++){
                 let re=new RegExp(baseForms[key][i],'gi');
-                resultString=resultString.replace(re,'<span class="color_i">'+baseForms[key][i]+'</span>')
+                resultString=resultString.replace(re,'<span class="color_i">'+baseForms[key][i]+'</span>');
             }
     }
 
