@@ -88,25 +88,21 @@ button.addEventListener('click',()=>{
         }
         baseForms[wordBaseForm].push(word);
     }
-    let fres=[];
-    for (let key in baseForms){
-        console.log(baseForms[key]);
+    let resultString=text.value;
+    for(let key in baseForms){
         if (baseForms[key].length>1){
-            fres=fres.concat(baseForms[key]);
+            console.log(baseForms[key]);
+            for(let i=0;i<baseForms[key].length;i++){
+                let re=new RegExp(baseForms[key][i],'gi');
+                resultString=resultString.replace(re,'<span class="color_i">'+baseForms[key][i]+'</span>')
+            }
         }
     }
-    let resultString='';
-    for(let i=0;i<tokenized.length;i++){
-        if (fres.indexOf(tokenized[i])!==-1){
-            resultString+='<span>'+tokenized[i]+'</span> ';
-        }else{
-            resultString+=tokenized[i]+' ';
-        }
 
-    }
-    resultString=resultString.trim();
 
-    console.log('Однокореные и повторяющиеся слова: ',fres);
+
+
+    //console.log('Однокореные и повторяющиеся слова: ',fres);
     console.log('Базовые формы слов: ', baseForms);
     let output='<h3>Результат анализа:</h3>';
     output+='<p>'+resultString+'</p>';
