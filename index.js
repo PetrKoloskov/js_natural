@@ -13,6 +13,8 @@ button.addEventListener('click',()=> {
     console.log(tokenizer.tokenize(str));
     document.getElementById('res').innerText=tokenizer.tokenize(str);
 });*/
+//natural.PorterStemmer.attach(undefined, undefined, undefined);
+//console.log("I can see that we are going to be friends".tokenizeAndStem());
 function unique(arr) {
     let result = [];
     for (let str of arr) {
@@ -64,7 +66,8 @@ function toBaseForm(word,lang){
 var button=document.getElementById('submit');
 var text=document.getElementById('text');
 
-button.addEventListener('click',()=>{
+text.addEventListener('input',()=>{
+    document.querySelector('#res').innerText='';
     console.log(text.value.length);
     let str=text.value.toLowerCase().split('');
     let sGl='БВГДЖЗЙКЛМНПРСТФХЦЧШЩЪЬBCDFGHJKLMNPQRSTVWXYZ'.toLowerCase();
