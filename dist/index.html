@@ -5,63 +5,47 @@
     <title>Webpack App2</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <script defer="defer" src="bundle.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 </head>
 <body>
 <style>
     #text{
-        width:600px;
-        height:400px
+        width:100%;
+        height:200px;
     }
     #submit{
 
     }
+    #res span{
+        display:inline-block;
+        border:1px solid #e4e4e4;
+        background-color: #e4e4e4;
+        border-radius:2px;
+    }
 </style>
-
-<textarea name="text" id="text" placeholder="Введите текст..."></textarea>
-<button name="submit" id="submit">Анализировать текст</button>
-<div id="res">
-
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h3>Выберите язык:</h3>
+            <select name="lang" id="lang">
+                <option value="ru">Русский</option>
+                <option value="en">English</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <h3>Введите текст:</h3>
+            <textarea name="text" id="text" placeholder="Введите текст..."></textarea>
+            <button name="submit" id="submit">Анализировать текст</button>
+        </div>
+        <div class="col-md-4">
+            <div id="res">
+            </div>
+        </div>
+    </div>
 </div>
-
 <script>
-    function countSumbols(str){
-        //str=str.replace(/ /gi,'').trim();
-        var dict={};
-        for(let i=0;i<str.length;i++){
-            if(dict.hasOwnProperty(str[i])){
-                dict[str[i]]++;
-            }else{
-                dict[str[i]]=1;
-            }
-        }
-        return dict;
-    }
-    function countLetters(str,typeLetters){
 
-        //var arr='аоэеиыуёюяaeiouy';
-        return str.reduce((res,item)=>typeLetters.includes(item)?res+=item:res,'');
-    }
-
-    function countWords(str){
-
-    }
-
-    var button=document.getElementById('submit');
-    var text=document.getElementById('text');
-
-    button.addEventListener('click',()=>{
-        console.log(text.value.length);
-        var str=text.value.toLowerCase().split('');
-        var sGl='БВГДЖЗЙКЛМНПРСТФХЦЧШЩBCDFGHJKLMNPQRSTVWXYZ'.toLowerCase();
-        var gl='АОЭЕИЫУЁЮЯAEIOUY'.toLowerCase();
-        console.log(countSumbols(text.value));
-        var countGl=countLetters(str,gl);
-        var countSGl=countLetters(str,sGl);
-        var countAllLetters=countGl.length+countSGl.length;
-        console.log('количество гласных: ', countGl.length);
-        console.log('количество согласных: ', countSGl.length);
-        console.log('Общее количество букв: ', countAllLetters);
-    })
 </script>
 </body>
 </html>
