@@ -13,6 +13,15 @@ button.addEventListener('click',()=> {
     console.log(tokenizer.tokenize(str));
     document.getElementById('res').innerText=tokenizer.tokenize(str);
 });*/
+function unique(arr) {
+    let result = [];
+    for (let str of arr) {
+        if (!result.includes(str)) {
+            result.push(str);
+        }
+    }
+    return result;
+}
 function countElements(str){
     //str=str.replace(/ /gi,'').trim();
     var dict={};
@@ -88,15 +97,21 @@ button.addEventListener('click',()=>{
         }
         baseForms[wordBaseForm].push(word);
     }
+    for(let key in baseForms) {
+        if (baseForms[key].length <= 1) {
+            delete baseForms[key];
+        }
+        else{
+            baseForms[key]= unique(baseForms[key]);
+        }
+    }
     let resultString=text.value;
     for(let key in baseForms){
-        if (baseForms[key].length>1){
             console.log(baseForms[key]);
             for(let i=0;i<baseForms[key].length;i++){
                 let re=new RegExp(baseForms[key][i],'gi');
                 resultString=resultString.replace(re,'<span class="color_i">'+baseForms[key][i]+'</span>')
             }
-        }
     }
 
 
