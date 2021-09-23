@@ -76,7 +76,6 @@ function filterBaseForms(baseForms){
 function getResultString(resultString,baseForms){
     let color=0;
     for(let key in baseForms){
-        console.log(baseForms[key]);
         for(let i=0;i<baseForms[key].length;i++){
             let re=new RegExp('([^A-Za-zА-Яа-яёЁ]+|^)('+baseForms[key][i]+')(?![A-Za-zА-Яа-яёЁ])','gi');
             resultString=resultString.replace(re,`$1<span class=\"color_${color}\">$2</span>`);
@@ -120,6 +119,9 @@ text.addEventListener('input',()=>{
     output+='<p>Количество слов: '+tokenized.length+'</p>';
     output+='<p>Количество символов: '+text.value.length+'</p>';
     output+='<p>Общее количество букв: '+ countAllLetters+'</p>';
-    output+='<p>Топ-3 слов: '+mostPopular;
+    output+='<p>Топ-3 слов: <br>';
+    for (let key in mostPopular){
+        output+='Слово "'+mostPopular[key][0]+'": '+mostPopular[key][1]+'<br>';
+    }
     document.getElementById('res').insertAdjacentHTML('beforeend',output);
 });
