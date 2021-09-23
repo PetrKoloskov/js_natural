@@ -106,15 +106,21 @@ text.addEventListener('input',()=>{
         }
         else{
             baseForms[key]= unique(baseForms[key]);
+            baseForms[key].sort();
         }
     }
     let resultString=text.value;
     for(let key in baseForms){
             console.log(baseForms[key]);
+            let color=0;
             for(let i=0;i<baseForms[key].length;i++){
-                let re=new RegExp(baseForms[key][i],'gi');
-                resultString=resultString.replace(re,'<span class="color_i">'+baseForms[key][i]+'</span>');
+                let re=new RegExp('([^A-Za-zА-Яа-яёЁ]+|^)('+baseForms[key][i]+')(?![A-Za-zА-Яа-яёЁ])','gi');
+                //let re=new RegExp('(\\W+|^)('+baseForms[key][i]+')(?!\\w)','gi');
+                //resultString=resultString.replace(re,'<span class="color_i">'+baseForms[key][i]+'</span>');
+                resultString=resultString.replace(re,`$1<span class=\"color_${color}\">$2</span>`);
+
             }
+           color+=1;
     }
 
 
