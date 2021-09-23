@@ -121,7 +121,7 @@ text.addEventListener('input',()=>{
     output+='<p>Общее количество букв: '+ countAllLetters+'</p>';
     output+='<p>Топ-3 слов: <br>';
     for (let key in mostPopular){
-        output+='Слово "'+mostPopular[key][0]+'": '+mostPopular[key][1]+'<br>';
+        output+='Слово "'+mostPopular[key][0]+' ": '+mostPopular[key][1]+'<br>';
     }
     document.getElementById('res').insertAdjacentHTML('beforeend',output);
 });
