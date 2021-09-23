@@ -13,9 +13,23 @@
     #text{
         width:100%;
         height:200px;
+        resize: none;
     }
-    #submit{
-
+    #res span.color_0{
+        background-color:peru;
+        border-color:peru;
+    }
+    #res span.color_1{
+        background-color:goldenrod;
+        border-color:goldenrod;
+    }
+    #res span.color_2{
+        background-color:olivedrab;
+        border-color:goldenrod;
+    }
+    #res span.color_3{
+        background-color:coral;
+        border-color:goldenrod;
     }
     #res span{
         display:inline-block;
@@ -29,20 +43,17 @@
         <div class="col-md-4">
             <h3>Выберите язык:</h3>
             <select name="lang" id="lang">
-                <option value="ru">Русский</option>
+                <option value="ru" selected="selected">Русский</option>
                 <option value="en">English</option>
             </select>
         </div>
         <div class="col-md-4">
             <h3>Введите текст:</h3>
             <p>Например:<br><span style="font-style:italic">
-                Солдат шел по улице домой
-                И увидел этих ребят.
-                "Кто ваша мама, ребята?" -
-                Спросил у ребят солдат.
+                How much wood would a woodchuck chuck if a woodchuck could chuck wood?
             </span></p>
             <textarea name="text" id="text" placeholder="Введите текст..."></textarea>
-            <button name="submit" id="submit">Анализировать текст</button>
+            <button type="reset" name="clear" id="clear">Очистить поле ввода</button>
         </div>
         <div class="col-md-4">
             <div id="res">
